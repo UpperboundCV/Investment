@@ -1,0 +1,5 @@
+LINUX = 'Linux'
+STOCK_CONFIG_PATH=r"../resources/stock.conf"
+STOCK_WINDOWS='STOCK_WINDOWS'
+STOCK_LINUX="STOCK_LINUX"
+STOCK_THAI_PATH="stock_thai_path"

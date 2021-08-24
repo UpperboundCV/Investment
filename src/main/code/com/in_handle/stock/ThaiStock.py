@@ -1,8 +1,8 @@
 import configparser
-from typing import List
 import os
-import pathlib
-import glob
+from typing import List
+import platform
+from . import LINUX,STOCK_LINUX,STOCK_WINDOWS,STOCK_THAI_PATH,STOCK_CONFIG_PATH
 
 
 class ThaiStock:
@@ -10,8 +10,8 @@ class ThaiStock:
 
     def get_all_csv_path(self) -> str:
         config = configparser.RawConfigParser()
-        config.read(filenames=r"..\resources\stock.conf")
-        return config.get("STOCK_WINDOWS", "stock_thai_path")
+        config.read(filenames=STOCK_CONFIG_PATH)
+        return config.get(STOCK_LINUX,STOCK_THAI_PATH)if platform.system()==LINUX else config.get(STOCK_WINDOWS, STOCK_THAI_PATH)
 
     def file_list(self) -> List[str]:
         # print(fr"{self.get_all_csv_path()}")
@@ -22,5 +22,5 @@ class ThaiStock:
                 if file.endswith(self.CSV_FILE):
                     print(os.path.join(r, file))
                     csv_paths.append(str(os.path.join(r, file)))
-        return csv_paths#glob.glob(self.CSV_FILE, recursive=True)#list(pathlib.Path(this_dir).glob(f'{self.CSV_FILE}'))
+        return csv_paths
 
