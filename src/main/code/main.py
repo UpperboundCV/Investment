@@ -5,18 +5,10 @@ from com.in_handle.stock.ThaiStock import ThaiStock
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    thai_stock = ThaiStock()
+    stock_df = thai_stock.get_stock_between('BMSCG','2021-08-16','2021-08-20')
 
-    freq: float = 1.0
 
-    while True:
-        firstObj = DateTimeHelper()
-        thai_stock = ThaiStock()
-        print(thai_stock.get_all_csv_path())
-        paths = thai_stock.file_list()
-        for path in paths:
-            print(path)
-        print(firstObj.to_datetime_str(firstObj.get_time_now()))
-        time.sleep(freq)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 # http://siamchart.com/download.php?type=old
